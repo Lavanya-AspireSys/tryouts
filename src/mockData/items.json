@@ -1,0 +1,52 @@
+[
+    {
+      "id": 1,
+      "title": "samsung galaxy s7 4g lte with 32gb",
+      "brand": "samsung",
+      "spec": "",
+      "color": "#6cb58f",
+      "price": "$21,500",
+      "rating": 3,
+      "image": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5286/5286503cv12d.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Redmi 9A",
+      "brand": "redmi",
+      "spec": "",
+      "color": "#6cb58f",
+      "price": "$21,500",
+      "rating": 3,
+      "image": "https://www.jungle.lk/wp-content/uploads/2020/09/Xiaomi-Redmi-9A-Mobile-Phone-With-32GB-3GB-RAM-6.53-inch-FHD-Dot-Drop-Display-3.jpg"
+    },
+    {
+      "id": 3,
+      "title": "quad-core MT6582 with 2GB RAM",
+      "brand": "oneplus",
+      "spec": "",
+      "color": "#6cb58f",
+      "price": "$21,500",
+      "rating": 3,
+      "image": "https://www.gizchina.com/wp-content/uploads/images/jpeg7.jpg"
+    },
+    {
+      "id": 4,
+      "title": "sunsky 1plus",
+      "brand": "oneplus",
+      "spec": "",
+      "color": "#6cb58f",
+      "price": "$32,000",
+      "rating": 3,
+      "image": "https://th.bing.com/th/id/OIP.HQqAkRJgwW_cOnJifcAXpQHaHy?pid=ImgDet&rs=1"
+    },
+    {
+      "id": 5,
+      "title": "Redmi 11pro",
+      "brand": "redmi",
+      "spec": "",
+      "color": "#6cb58f",
+      "price": "$21,000",
+      "rating": 3,
+      "image": "https://th.bing.com/th/id/OIP.DcNFvinHiUDeQYb5sEbH4QHaHa?pid=ImgDet&rs=1"
+    }
+]
