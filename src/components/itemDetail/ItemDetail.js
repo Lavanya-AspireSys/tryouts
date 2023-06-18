@@ -26,15 +26,10 @@ function ItemDetail() {
           <div className="item-brand" style={{ margin: "0px 10px" }}>
             {item.brand}
           </div>
-          <div className="item-name">{item.name}</div>
-          <div className="item-price">${item.price}</div>
+          <div className="item-name">{item.title}</div>
+          <div className="item-price">{item.price}</div>
 
-          <select className="item-size">
-            <option value={"S"}> Select size (S)</option>
-            <option value={"M"}> Select size (M)</option>
-            <option value={"L"}> Select size (L)</option>
-            <option value={"XL"}> Select size (XL)</option>
-          </select>
+         
           <button
             className="item-btn"
             disabled={isAdded}
@@ -46,12 +41,7 @@ function ItemDetail() {
             {isAdded ? <Link to="/cart">Go to Cart</Link> : "Add To bag"}
           </button>
           <p className="item-description">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+           {item.spec}
           </p>
         </div>
       </div>

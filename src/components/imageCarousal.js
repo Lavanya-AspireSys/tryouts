@@ -57,7 +57,6 @@ const ImageCarousel = ({ images }) => {
 
   return (
     <div className="carousel-container">
-      <h2 className="header">Image Carousel</h2>
       <div
         className="selected-image"
         style={{ backgroundImage: `url(${selectedImage?.url})` }}

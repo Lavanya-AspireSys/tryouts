@@ -1,0 +1,20 @@
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as per your design */
+  grid-gap: 20px; /* Adjust the gap between products */
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+}
+
+.product .title {
+  margin-top: 10px;
+  font-weight: bold;
+}

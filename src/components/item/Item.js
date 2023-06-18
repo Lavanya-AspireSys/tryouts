@@ -8,8 +8,7 @@ function Item({ name, rating, price, saleDiscount, image, brand }) {
       <div className="item-brand">{brand}</div>
       <div className="item-name">{name}</div>
       <div className="item-info">
-        <div className="item-price">${price}</div>
-        <div className="item-rating">{rating}&#9733;</div>
+        <div className="item-price">{price}</div>
       </div>
     </div>
   );

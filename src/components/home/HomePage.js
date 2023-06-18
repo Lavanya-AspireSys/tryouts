@@ -2,6 +2,7 @@ import {React,useEffect,useState} from "react";
 import items from "../../mockData/items.json";
 import latestProduct from "../../mockData/latestProduct.json";
 import ItemList from "../itemList/ItemList";
+import ItemListBrand from "../itemListBrand/ItemListBrand";
 import ImageCarousel, { ImageType } from "../imageCarousal.js";
 import "./HomePage.css";
 
@@ -9,6 +10,7 @@ import "./HomePage.css";
 function HomePage() {
   const [images, setImages] = useState();
   const [products, setProducts] = useState([]);
+  const [brandData, setBrandData] = useState([]);
 
   useEffect(() => {
     setProducts(items.slice(0, 10));
@@ -22,13 +24,27 @@ function HomePage() {
         }
           ))
     );
+    var resArr = [];
+    items.filter(function(item){
+      var i = resArr.findIndex(x => x.brand == item.brand);
+      if(i <= -1){
+        resArr.push({id: item.id, brand: item.brand, brandLogo: item.brandLogo});
+      }
+      return null;
+    });
+    console.log(resArr);
+setBrandData(resArr)
   }, []);
   return (
     <section>
   <div className="">
       <ImageCarousel images={images} />
     </div>
-      <ItemList items={products} />
+    <h3>Biggest offer of the season</h3>
+    <ItemList items={products} />
+    <h3>Shop by brand</h3>
+
+   <ItemListBrand items={brandData} />
     </section>
   );
 }

@@ -1,16 +1,27 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer,useState } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
   cart: [],
   orders: [],
+  user:""
 };
 
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
 
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const login = () => {
+
+    setIsLoggedIn(true);
+  };
+
+  const logout = () => {
+    setIsLoggedIn(false);
+  };
   const addItemToCartList = (item) => {
     dispatch({
       type: "ADD_ITEM_IN_CART",
@@ -50,11 +61,13 @@ export const GlobalProvider = ({ children }) => {
       value={{
         cart: state.cart,
         orders: state.orders,
+        user:state.user,
         addItemToCartList,
         removeItemFromCartList,
         clearCart,
         addItemToOrderList,
         removeItemFromOrderList,
+        login,isLoggedIn,logout
       }}
     >
       {children}

@@ -20,12 +20,14 @@ function ItemList({ items }) {
       ))} */}
        <div className="product-grid">
       {items.map((item) => (
+         <Link to={`/item/${item.id}`} key={item.id}>
         <div key={item.id} className="product">
           <div key={item.id} className="product">
           <img src={item.image} alt={item.title} />
           <h3>{item.title}</h3>
         </div>
         </div>
+        </Link>
       ))}
     </div>
     </div>
