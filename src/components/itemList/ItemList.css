@@ -1,20 +1,28 @@
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as per your design */
-  grid-gap: 20px; /* Adjust the gap between products */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
 }
 
 .product {
-  border: 1px solid #ccc;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .product img {
   width: 100%;
-  height: auto;
+  max-height: 100px;
+  object-fit: cover;
 }
 
-.product .title {
+.product h3 {
   margin-top: 10px;
-  font-weight: bold;
 }

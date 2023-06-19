@@ -39,7 +39,7 @@ const Navbar = () => {
         <button className="nav-btn">Hi, {getData?.userName}</button>
       </ul>}
       <ul>
-      {typeof getData !=null && typeof getData !=undefined ?
+      {typeof getData !=null && typeof getData !=undefined && getData !=null ?
       <button className="nav-btn" onClick={() => logoutData()}>logout</button>:
       <button className="nav-btn" onClick={() => login()}>login</button>
       }

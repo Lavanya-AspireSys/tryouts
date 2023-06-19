@@ -4,6 +4,7 @@ import React, { useState, useContext } from 'react';
 import { GlobalContext } from "../../context/GlobalState";
 import user from "../../mockData/users.json";
 import { BrowserRouter as Router, useHistory } from 'react-router-dom';
+import "./Login.css";
 
 
 const Login = () => {
