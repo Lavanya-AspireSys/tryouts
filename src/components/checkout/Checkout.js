@@ -7,7 +7,8 @@ const Checkout = () => {
   const { cart, orders, addItemToOrderList, clearCart } =
     useContext(GlobalContext);
 
-  const subTotal = Math.floor(cart?.reduce((sum, curr) => sum + (curr.price), 0));
+    const subTotal = Math.floor(cart?.reduce((sum, curr) => sum + (curr.price*curr.quantity), 0));
+    const totalQuantity = Math.floor(cart?.reduce((sum, curr) => sum + (curr.quantity), 0));
   const total = subTotal;
   const [isOrdered, setIsOrdered] = useState(false);
   const handlePay = () => {
@@ -36,7 +37,10 @@ const Checkout = () => {
               <h4>Order Review</h4>
               <span>{cart?.length} items in cart</span>
             </div>
-           
+            <div className="custom-row">
+              <h4>Total Quantity</h4>
+              <span>{totalQuantity}</span>
+            </div>
           
             <div className="custom-row">
               <h4>Total</h4>

@@ -17,7 +17,7 @@ function Cart() {
             {cart.map((item) => (
               <div className="cart-item" key={item.id}>
                 <div className="item-price">{item.price}</div>
-                <div className="item-name">{item.name}</div>
+                <div className="item-name">{item.title+" - " + (item.quantity + "qty")}</div>
                 <div className="item-expectedDelivery">
                   (Expected Delivery 3 - 6 days)
                 </div>
