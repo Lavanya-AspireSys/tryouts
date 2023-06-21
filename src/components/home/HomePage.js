@@ -24,19 +24,19 @@ function HomePage() {
         }
           ))
     );
-    var resArr = [];
+    let resArr = [];
     items.filter(function(item){
-      var i = resArr.findIndex(x => x.brand == item.brand);
+      
+      let i = resArr.findIndex(x => x.brand == item.brand);
       if(i <= -1){
         resArr.push({id: item.id, brand: item.brand, brandLogo: item.brandLogo});
       }
       return null;
     });
-    console.log(resArr);
 setBrandData(resArr)
   }, []);
   return (
-    <section>
+    <section> 
   <div className="">
       <ImageCarousel images={images} />
     </div>

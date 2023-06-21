@@ -23,7 +23,6 @@ function ItemDetail() {
 
   function handleSelectChange(event) {
     item.quantity = +event.target.value;
-    console.log(event.target.value,"my item",item)
     setQuantity(event.target.value)
   }
   return (

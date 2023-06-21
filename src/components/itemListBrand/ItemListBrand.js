@@ -4,7 +4,6 @@ import "./ItemListBrand.css";
 import { Link } from "react-router-dom";
 
 function ItemList({ items }) {
-  console.log("brand item",items)
   return (
     <div className="item-list">
    

@@ -1,6 +1,7 @@
-import "./App.css";
-import HomePage from "./components/home/HomePage";
+import React, { useContext,useEffect } from "react";
 import { BrowserRouter as Router, Switch,Redirect, Route } from "react-router-dom";
+import { GlobalContext } from "./context/GlobalState";
+import HomePage from "./components/home/HomePage";
 import ItemDetail from "./components/itemDetail/ItemDetail";
 import Navbar from "./components/navbar/Navbar";
 import Cart from "./components/cart/Cart";
@@ -8,8 +9,6 @@ import Orders from "./components/orders/Orders";
 import Checkout from "./components/checkout/Checkout";
 import ItemListByBrand from "./components/itemListByBrand/ItemListByBrand";
 import Login from "./components/login/Login";
-import React, { useContext } from "react";
-import { GlobalContext } from "./context/GlobalState";
 
 const UnAuthRoute = ({ component: Component,authUser, ...rest }) => {
 
@@ -45,6 +44,17 @@ const AuthRoute = ({ component: Component,authUser, ...rest }) => {
 };
 
 function App() {
+  const { login } = useContext(GlobalContext);
+
+  useEffect(() => {
+    // Retrieve auth data from sessionStorage
+    const getUserData = sessionStorage.getItem("authData");
+    const isAuthenticated = getUserData != null;
+    if(isAuthenticated)
+    {
+    login();
+    }
+  }, []);
 	const { isLoggedIn } = useContext(GlobalContext);
 
   return (

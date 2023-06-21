@@ -7,15 +7,12 @@ const ImageCarousel = ({ images }) => {
   const carouselItemsRef = useRef([]);
 
   useEffect(() => {
-    console.log("my image",images)
     if (images && images[0]) {
-    console.log("test",images)
         
       carouselItemsRef.current = carouselItemsRef.current.slice(
         0,
         images.length
       );
-      console.log("test...",images[0])
 
       setSelectedImageIndex(0);
       setSelectedImage(images[0]);

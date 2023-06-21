@@ -3,14 +3,11 @@ import Item from "../item/Item";
 import "./ItemListByBrand.css";
 import { Link, useParams } from "react-router-dom";
 import brand from "../../mockData/items.json";
-console.log("my brand ",brand)
-
 
 function ItemListByBrand() {
   const params = useParams();
   const itemId = (params?.brand);
   let getItemDetail = brand.filter((item) => item.brand === itemId)
-  console.log("my getItemDetail ",getItemDetail)
 
   const itemsData = getItemDetail;
   return (

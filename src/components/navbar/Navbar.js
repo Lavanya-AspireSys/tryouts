@@ -7,11 +7,10 @@ const Navbar = () => {
   const { logout } = useContext(GlobalContext);
 
   const history = useHistory();
-  let getData =JSON.parse( localStorage.getItem("authData"));
-  console.log("getData",getData)
+  let getData =JSON.parse( sessionStorage.getItem("authData"));
  function logoutData(){
   logout();
-  localStorage.clear()
+  sessionStorage.clear()
   history.push('/login')
   }
   function login(){
