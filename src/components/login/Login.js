@@ -16,7 +16,6 @@ const Login = () => {
   const history = useHistory();
 
   const onSubmit = (data) => {
-    console.log(data);
     let obj = user.find(o => o.emailId === data.email && o.password == data.password);
     if(obj)
     {
