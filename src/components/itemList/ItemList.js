@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Item from "../item/Item";
 import "./ItemList.css";
-import { Link } from "react-router-dom";
 
 function ItemList({ items }) {
   return (

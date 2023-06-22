@@ -1,7 +1,6 @@
 import React from "react";
-import Item from "../item/Item";
-import "./ItemListBrand.css";
 import { Link } from "react-router-dom";
+import "./ItemListBrand.css";
 
 function ItemList({ items }) {
   return (

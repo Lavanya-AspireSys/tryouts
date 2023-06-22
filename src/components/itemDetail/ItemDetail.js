@@ -1,28 +1,38 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import "./ItemDetail.css";
-import items from "../../mockData/items.json";
+import { toast } from 'react-toastify';
 import { GlobalContext } from "../../context/GlobalState";
+import "./ItemDetail.css";
 
-const getItemDetail = (id) => items.filter((item) => item.id === id)[0];
 
 function ItemDetail() {
-  useEffect(() => { 
-    item.quantity = 1;
-
-   },[]);
+  const [itemsData, setItemsData] = useState([]);
   const params = useParams();
   const itemId = parseInt(params?.id);
-  let item = !!itemId && getItemDetail(itemId);
+  const [quantity,setQuantity] = useState(1);
   const { addItemToCartList, cart } = useContext(GlobalContext);
   const [isAdded, setIsAdded] = useState(
     cart.findIndex((c) => c.id === itemId) > -1
   );
-  
-  const [quantity,setQuantity] = useState(1);
+    useEffect(() => {
+      fetch('http://localhost:3001/items')
+        .then(response => response.json())
+        .then(data => 
+          {
+            let getItemDetail = (id) => data.filter((item) => item.id === id)[0];
+
+            
+            let item = !!itemId && getItemDetail(itemId);
+           setItemsData(item)
+           item.quantity = 1;
+
+          })
+        .catch(error => toast("error","Something went wrong. Please try again later."));
+    }, []);
+ 
 
   function handleSelectChange(event) {
-    item.quantity = +event.target.value;
+    itemsData.quantity = +event.target.value;
     setQuantity(event.target.value)
   }
   return (
@@ -30,14 +40,14 @@ function ItemDetail() {
       <Link to="/"> &#8592; Back</Link>
       <div className="item-detail">
         <div className="item-detail-image">
-          <img src={item.image} alt={"Item image"} />
+          <img src={itemsData.image} alt={"Item image"} />
         </div>
         <div className="item-detail-info">
           <div className="item-brand" style={{ margin: "0px 10px" }}>
-            {item.brand}
+            {itemsData.brand}
           </div>
-          <div className="item-name">{item.title}</div>
-          <div className="item-price">{item.price}</div>
+          <div className="item-name">{itemsData.title}</div>
+          <div className="item-price">{itemsData.price}</div>
 
           <select  value={quantity} className="item-size" onChange={handleSelectChange}>
             <option value={1}> 1</option>
@@ -49,14 +59,14 @@ function ItemDetail() {
             className="item-btn"
             disabled={isAdded}
             onClick={() => {
-              addItemToCartList(item);
+              addItemToCartList(itemsData);
               setIsAdded(true);
             }}
           >
             {isAdded ? <Link to="/cart">Go to Cart</Link> : "Add To bag"}
           </button>
           <p className="item-description">
-           {item.spec}
+           {itemsData.spec}
           </p>
         </div>
       </div>

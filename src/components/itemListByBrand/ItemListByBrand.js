@@ -1,15 +1,25 @@
-import React from "react";
-import Item from "../item/Item";
-import "./ItemListByBrand.css";
+import React,{useState,useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
-import brand from "../../mockData/items.json";
+import { toast } from 'react-toastify';
+import "./ItemListByBrand.css";
 
 function ItemListByBrand() {
+  const [itemsData, setItemsData] = useState([]);
   const params = useParams();
-  const itemId = (params?.brand);
-  let getItemDetail = brand.filter((item) => item.brand === itemId)
 
-  const itemsData = getItemDetail;
+  useEffect(() => {
+    fetch('http://localhost:3001/users')
+      .then(response => response.json())
+      .then(data => 
+        {
+  const itemId = (params?.brand);
+  let getItemDetail = data.filter((item) => item.brand === itemId)
+
+  setItemsData(getItemDetail);
+        })
+      .catch(error => toast("error","Something went wrong. Please try again later."));
+  }, []);
+
   return (
     <div className="item-list">
   

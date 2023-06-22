@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link,useHistory } from "react-router-dom";
-import "./Navbar.css";
 import { GlobalContext } from "../../context/GlobalState";
+import "./Navbar.css";
 
 const Navbar = () => {
   const { logout } = useContext(GlobalContext);

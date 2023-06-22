@@ -1,27 +1,39 @@
-// Login.js
-
-import React, { useState, useContext } from 'react';
-import { GlobalContext } from "../../context/GlobalState";
-import user from "../../mockData/users.json";
+import React, { useState,useEffect, useContext } from 'react';
 import { BrowserRouter as Router, useHistory } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import { GlobalContext } from "../../context/GlobalState";
+import 'react-toastify/dist/ReactToastify.css';
 import "./Login.css";
 
 const Login = () => {
+  useEffect(() => {
+    fetch('http://localhost:3001/users')
+      .then(response => response.json())
+      .then(data => 
+        {
+          setUser(data);
+         
+        })
+      .catch(error => toast("error","Invalid Credential"));
+  }, []);
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const [email, setEmail] = useState('');
+  const [user, setUser] = useState([]);
   const [password, setPassword] = useState('');
   const { login } = useContext(GlobalContext);
   const history = useHistory();
 
   const onSubmit = (data) => {
+
     let obj = user.find(o => o.emailId === data.email && o.password == data.password);
     if(obj)
     {
     login();
     let storageData = JSON.stringify({userName:data.email.split("@")[0],emailId:data.email})
     sessionStorage.setItem("authData",storageData)
+    toast("Logged in successfully")
     history.push('/')
     }
     else{
@@ -33,9 +45,9 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <label>Email:</label>
+          <label htmlFor="Email">Email</label>
           <input
-            type="email"
+            type="email" id="Email"
             {...register("email",
                             {
                                 required: true,
@@ -46,9 +58,9 @@ const Login = () => {
 
         </div>
         <div className="form-group">
-          <label>Password:</label>
+          <label htmlFor="Password">Password</label>
           <input
-            type="password"
+            type="password" id="Password"
             {...register("password", {
               required: true
           })}

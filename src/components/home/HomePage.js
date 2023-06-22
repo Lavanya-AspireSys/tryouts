@@ -1,6 +1,5 @@
 import {React,useEffect,useState} from "react";
-import items from "../../mockData/items.json";
-import latestProduct from "../../mockData/latestProduct.json";
+import { toast } from 'react-toastify';
 import ItemList from "../itemList/ItemList";
 import ItemListBrand from "../itemListBrand/ItemListBrand";
 import ImageCarousel, { ImageType } from "../imageCarousal.js";
@@ -13,19 +12,31 @@ function HomePage() {
   const [brandData, setBrandData] = useState([]);
 
   useEffect(() => {
-    setProducts(items.slice(0, 10));
+    fetch('http://localhost:3001/latestProduct')
+    .then(response => response.json())
+    .then(data => 
+      {
+        setImages(
+          data.map((latestPro) => (
+           
+            {
+             id: latestPro.id,
+              url: `${latestPro.image}`
+            }
+              ))
+        );
+      })
+    .catch(error => toast("error","Something went wrong. Please try again later"));
 
-    setImages(
-      latestProduct.map((latestPro) => (
-       
-        {
-         id: latestPro.id,
-          url: `${latestPro.image}`
-        }
-          ))
-    );
+    fetch('http://localhost:3001/items')
+    .then(response => response.json())
+    .then(data => 
+      {
+        setProducts(data.slice(0, 10));
+
+   
     let resArr = [];
-    items.filter(function(item){
+    data.filter(function(item){
       
       let i = resArr.findIndex(x => x.brand == item.brand);
       if(i <= -1){
@@ -34,6 +45,9 @@ function HomePage() {
       return null;
     });
 setBrandData(resArr)
+      })
+    .catch(error => toast("error","Something went wrong. Please try again later"));
+   
   }, []);
   return (
     <section> 

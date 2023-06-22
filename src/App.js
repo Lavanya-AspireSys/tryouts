@@ -1,5 +1,6 @@
 import React, { useContext,useEffect } from "react";
 import { BrowserRouter as Router, Switch,Redirect, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
 import { GlobalContext } from "./context/GlobalState";
 import HomePage from "./components/home/HomePage";
 import ItemDetail from "./components/itemDetail/ItemDetail";
@@ -9,7 +10,7 @@ import Orders from "./components/orders/Orders";
 import Checkout from "./components/checkout/Checkout";
 import ItemListByBrand from "./components/itemListByBrand/ItemListByBrand";
 import Login from "./components/login/Login";
-
+import 'react-toastify/dist/ReactToastify.css';
 const UnAuthRoute = ({ component: Component,authUser, ...rest }) => {
 
   return (
@@ -61,6 +62,8 @@ function App() {
     <div className="App">
       <Router>
         <div>
+        <ToastContainer />
+
           <Navbar />
         </div>
         <Switch>
